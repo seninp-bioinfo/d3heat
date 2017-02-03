@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>D3 Demo: SVG with data</title>
+    <script type="text/javascript" src="d3/d3.js"></script>
+    <style type="text/css">
+    /* No style rules here yet */
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // debug
+    d3.select("body").append('p').text("Reading JSON 'merged.json'");
+
+    var taxa = d3.map();
+    var projects = d3.set();
+
+    // drawing
+    var margin = {
+            top: 120,
+            right: 100,
+            bottom: 10,
+            left: 120
+        },
+        width = 500,
+        height = 500;
+
+
+    var x = d3.scaleOrdinal().range([0, width]),
+        z = d3.scaleLinear().domain([0, 4]).clamp(true),
+        c = d3.schemeCategory10;
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .style("margin-left", margin.left + "px")
+        .style("margin-top", margin.top + "px")
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // place all taxa and projects into sets
+    d3.json('merged.json', function(error, data) {
+
+        if (error) throw error;
+
+        d3.selectAll(data).each(function(d, i) {
+
+            // take care about the taxa map of maps
+            if (taxa.has(data[i].TAXA)) {
+                taxa.get(data[i].TAXA).set(data[i].PROJECT, data[i].ABUNDANCE);
+            } else {
+                var map = d3.map();
+                taxa.set(data[i].TAXA, map.set(data[i].PROJECT, data[i].ABUNDANCE));
+            }
+
+            projects.add(data[i].PROJECT);
+
+        });
+
+        // debug
+        d3.select("body").append('p').text("size of taxa " + taxa.size() + ":");
+        d3.select("body").append('ul').selectAll('li')
+            .data(taxa.keys()).enter().append('li').text(function(d) {
+                return d
+            });
+
+        d3.select("body").append('p').text("size of projects " + projects.size() + ":");
+        d3.select("body").append('ul').selectAll('li')
+            .data(projects.values()).enter().append('li').text(function(d) {
+                return d
+            });
+
+    });
+    </script>
+</body>
+
+</html>

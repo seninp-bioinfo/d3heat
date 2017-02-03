@@ -1,0 +1,1503 @@
+[
+    {
+        "TAXA": "Acetobacteraceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cellulomonadaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Mycoplasmataceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.02
+    },
+    {
+        "TAXA": "Clostridiaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Dermacoccaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.02
+    },
+    {
+        "TAXA": "Eubacteriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bacteroidaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bifidobacteriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cardiobacteriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Erythrobacteraceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Chromatiaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Hydrogenophilaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Spirochaetaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.05
+    },
+    {
+        "TAXA": "Promicromonosporaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.09
+    },
+    {
+        "TAXA": "Akkermansiaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bradyrhizobiaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cytophagaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Methylobacteriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Planococcaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Rikenellaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Intrasporangiaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Alcaligenaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Enterobacteriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Sphingomonadaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Peptostreptococcaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.12
+    },
+    {
+        "TAXA": "Mycobacteriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Sanguibacteraceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.19
+    },
+    {
+        "TAXA": "Bacillaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Atopobiaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.37
+    },
+    {
+        "TAXA": "Comamonadaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Vibrionaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Selenomonadaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.03
+    },
+    {
+        "TAXA": "Pseudomonadaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Peptoniphilaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.06
+    },
+    {
+        "TAXA": "Burkholderiaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Xanthomonadaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Aerococcaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Staphylococcaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Lactobacillaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Erysipelotrichaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 1.14
+    },
+    {
+        "TAXA": "Clostridiales Family XIII. Incertae Sedis",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.7
+    },
+    {
+        "TAXA": "Geodermatophilaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Leptotrichiaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.76
+    },
+    {
+        "TAXA": "Campylobacteraceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 2.63
+    },
+    {
+        "TAXA": "Neisseriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.12
+    },
+    {
+        "TAXA": "Porphyromonadaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 2.58
+    },
+    {
+        "TAXA": "Corynebacteriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Fusobacteriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 6.65
+    },
+    {
+        "TAXA": "Ruminococcaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Lachnospiraceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 6.53
+    },
+    {
+        "TAXA": "Flavobacteriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.44
+    },
+    {
+        "TAXA": "Actinomycetaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 9.1
+    },
+    {
+        "TAXA": "Pasteurellaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 7.5
+    },
+    {
+        "TAXA": "Micrococcaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 9.38
+    },
+    {
+        "TAXA": "Veillonellaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 18.79
+    },
+    {
+        "TAXA": "Streptococcaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 8.24
+    },
+    {
+        "TAXA": "Carnobacteriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.96
+    },
+    {
+        "TAXA": "Propionibacteriaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Moraxellaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Prevotellaceae",
+        "PROJECT": "SRR059928",
+        "ABUNDANCE": 23.41
+    },
+    {
+        "TAXA": "Acetobacteraceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cellulomonadaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Mycoplasmataceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Clostridiaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Dermacoccaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Eubacteriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.02
+    },
+    {
+        "TAXA": "Bacteroidaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.03
+    },
+    {
+        "TAXA": "Bifidobacteriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cardiobacteriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.04
+    },
+    {
+        "TAXA": "Erythrobacteraceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.08
+    },
+    {
+        "TAXA": "Chromatiaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Hydrogenophilaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Spirochaetaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.07
+    },
+    {
+        "TAXA": "Promicromonosporaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.04
+    },
+    {
+        "TAXA": "Akkermansiaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bradyrhizobiaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cytophagaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Methylobacteriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Planococcaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Rikenellaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Intrasporangiaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Alcaligenaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Enterobacteriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Sphingomonadaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.05
+    },
+    {
+        "TAXA": "Peptostreptococcaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.05
+    },
+    {
+        "TAXA": "Mycobacteriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Sanguibacteraceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.02
+    },
+    {
+        "TAXA": "Bacillaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Atopobiaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Comamonadaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.02
+    },
+    {
+        "TAXA": "Vibrionaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Selenomonadaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.06
+    },
+    {
+        "TAXA": "Pseudomonadaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.03
+    },
+    {
+        "TAXA": "Peptoniphilaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.05
+    },
+    {
+        "TAXA": "Burkholderiaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.64
+    },
+    {
+        "TAXA": "Xanthomonadaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Aerococcaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 1.91
+    },
+    {
+        "TAXA": "Staphylococcaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.72
+    },
+    {
+        "TAXA": "Lactobacillaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Erysipelotrichaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.22
+    },
+    {
+        "TAXA": "Clostridiales Family XIII. Incertae Sedis",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.06
+    },
+    {
+        "TAXA": "Geodermatophilaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Leptotrichiaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.7
+    },
+    {
+        "TAXA": "Campylobacteraceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.38
+    },
+    {
+        "TAXA": "Neisseriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 6.02
+    },
+    {
+        "TAXA": "Porphyromonadaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 5.43
+    },
+    {
+        "TAXA": "Corynebacteriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.2
+    },
+    {
+        "TAXA": "Fusobacteriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.9
+    },
+    {
+        "TAXA": "Ruminococcaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Lachnospiraceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.68
+    },
+    {
+        "TAXA": "Flavobacteriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 17.38
+    },
+    {
+        "TAXA": "Actinomycetaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 1.93
+    },
+    {
+        "TAXA": "Pasteurellaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 20.5
+    },
+    {
+        "TAXA": "Micrococcaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 15.86
+    },
+    {
+        "TAXA": "Veillonellaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 1.16
+    },
+    {
+        "TAXA": "Streptococcaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 15.62
+    },
+    {
+        "TAXA": "Carnobacteriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.82
+    },
+    {
+        "TAXA": "Propionibacteriaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0.05
+    },
+    {
+        "TAXA": "Moraxellaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Prevotellaceae",
+        "PROJECT": "SRR061287",
+        "ABUNDANCE": 8.13
+    },
+    {
+        "TAXA": "Acetobacteraceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cellulomonadaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Mycoplasmataceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Clostridiaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Dermacoccaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Eubacteriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bacteroidaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bifidobacteriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cardiobacteriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Erythrobacteraceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Chromatiaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Hydrogenophilaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Spirochaetaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Promicromonosporaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Akkermansiaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bradyrhizobiaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cytophagaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Methylobacteriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Planococcaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Rikenellaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Intrasporangiaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Alcaligenaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Enterobacteriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0.17
+    },
+    {
+        "TAXA": "Sphingomonadaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Peptostreptococcaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Mycobacteriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Sanguibacteraceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bacillaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Atopobiaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Comamonadaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0.04
+    },
+    {
+        "TAXA": "Vibrionaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Selenomonadaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Pseudomonadaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Peptoniphilaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 1.1
+    },
+    {
+        "TAXA": "Burkholderiaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Xanthomonadaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0.07
+    },
+    {
+        "TAXA": "Aerococcaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Staphylococcaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0.14
+    },
+    {
+        "TAXA": "Lactobacillaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Erysipelotrichaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Clostridiales Family XIII. Incertae Sedis",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Geodermatophilaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Leptotrichiaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Campylobacteraceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0.1
+    },
+    {
+        "TAXA": "Neisseriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0.06
+    },
+    {
+        "TAXA": "Porphyromonadaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Corynebacteriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 5.28
+    },
+    {
+        "TAXA": "Fusobacteriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Ruminococcaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Lachnospiraceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Flavobacteriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Actinomycetaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Pasteurellaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0.33
+    },
+    {
+        "TAXA": "Micrococcaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0.1
+    },
+    {
+        "TAXA": "Veillonellaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Streptococcaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Carnobacteriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 38.78
+    },
+    {
+        "TAXA": "Propionibacteriaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 0.2
+    },
+    {
+        "TAXA": "Moraxellaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 51.91
+    },
+    {
+        "TAXA": "Prevotellaceae",
+        "PROJECT": "SRR062284",
+        "ABUNDANCE": 1.72
+    },
+    {
+        "TAXA": "Acetobacteraceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cellulomonadaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Mycoplasmataceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Clostridiaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.02
+    },
+    {
+        "TAXA": "Dermacoccaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Eubacteriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Bacteroidaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Bifidobacteriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.04
+    },
+    {
+        "TAXA": "Cardiobacteriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Erythrobacteraceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Chromatiaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Hydrogenophilaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Spirochaetaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.02
+    },
+    {
+        "TAXA": "Promicromonosporaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.03
+    },
+    {
+        "TAXA": "Akkermansiaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bradyrhizobiaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cytophagaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Methylobacteriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Planococcaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Rikenellaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Intrasporangiaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Alcaligenaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Enterobacteriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Sphingomonadaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Peptostreptococcaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.27
+    },
+    {
+        "TAXA": "Mycobacteriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Sanguibacteraceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.33
+    },
+    {
+        "TAXA": "Bacillaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Atopobiaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.38
+    },
+    {
+        "TAXA": "Comamonadaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Vibrionaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Selenomonadaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 1.02
+    },
+    {
+        "TAXA": "Pseudomonadaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Peptoniphilaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.05
+    },
+    {
+        "TAXA": "Burkholderiaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.03
+    },
+    {
+        "TAXA": "Xanthomonadaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Aerococcaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Staphylococcaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.03
+    },
+    {
+        "TAXA": "Lactobacillaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Erysipelotrichaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 1.93
+    },
+    {
+        "TAXA": "Clostridiales Family XIII. Incertae Sedis",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 3.22
+    },
+    {
+        "TAXA": "Geodermatophilaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Leptotrichiaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 2.68
+    },
+    {
+        "TAXA": "Campylobacteraceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 3.41
+    },
+    {
+        "TAXA": "Neisseriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.76
+    },
+    {
+        "TAXA": "Porphyromonadaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.7
+    },
+    {
+        "TAXA": "Corynebacteriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.07
+    },
+    {
+        "TAXA": "Fusobacteriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 2.46
+    },
+    {
+        "TAXA": "Ruminococcaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Lachnospiraceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 4.88
+    },
+    {
+        "TAXA": "Flavobacteriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.56
+    },
+    {
+        "TAXA": "Actinomycetaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 7.71
+    },
+    {
+        "TAXA": "Pasteurellaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.91
+    },
+    {
+        "TAXA": "Micrococcaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 5.9
+    },
+    {
+        "TAXA": "Veillonellaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 14.66
+    },
+    {
+        "TAXA": "Streptococcaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 2.92
+    },
+    {
+        "TAXA": "Carnobacteriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.17
+    },
+    {
+        "TAXA": "Propionibacteriaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0.01
+    },
+    {
+        "TAXA": "Moraxellaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Prevotellaceae",
+        "PROJECT": "SRR062419",
+        "ABUNDANCE": 44.72
+    },
+    {
+        "TAXA": "Acetobacteraceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cellulomonadaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Mycoplasmataceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Clostridiaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Dermacoccaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Eubacteriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bacteroidaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bifidobacteriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Cardiobacteriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Erythrobacteraceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Chromatiaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.14
+    },
+    {
+        "TAXA": "Hydrogenophilaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.14
+    },
+    {
+        "TAXA": "Spirochaetaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Promicromonosporaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Akkermansiaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.19
+    },
+    {
+        "TAXA": "Bradyrhizobiaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.19
+    },
+    {
+        "TAXA": "Cytophagaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.19
+    },
+    {
+        "TAXA": "Methylobacteriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.19
+    },
+    {
+        "TAXA": "Planococcaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.19
+    },
+    {
+        "TAXA": "Rikenellaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.19
+    },
+    {
+        "TAXA": "Intrasporangiaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.24
+    },
+    {
+        "TAXA": "Alcaligenaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.28
+    },
+    {
+        "TAXA": "Enterobacteriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.14
+    },
+    {
+        "TAXA": "Sphingomonadaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.33
+    },
+    {
+        "TAXA": "Peptostreptococcaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Mycobacteriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.52
+    },
+    {
+        "TAXA": "Sanguibacteraceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Bacillaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.66
+    },
+    {
+        "TAXA": "Atopobiaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Comamonadaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.71
+    },
+    {
+        "TAXA": "Vibrionaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.95
+    },
+    {
+        "TAXA": "Selenomonadaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Pseudomonadaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 1.18
+    },
+    {
+        "TAXA": "Peptoniphilaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Burkholderiaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.71
+    },
+    {
+        "TAXA": "Xanthomonadaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 1.75
+    },
+    {
+        "TAXA": "Aerococcaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.19
+    },
+    {
+        "TAXA": "Staphylococcaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 1.94
+    },
+    {
+        "TAXA": "Lactobacillaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 3.12
+    },
+    {
+        "TAXA": "Erysipelotrichaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Clostridiales Family XIII. Incertae Sedis",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Geodermatophilaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 3.98
+    },
+    {
+        "TAXA": "Leptotrichiaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.28
+    },
+    {
+        "TAXA": "Campylobacteraceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.19
+    },
+    {
+        "TAXA": "Neisseriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.24
+    },
+    {
+        "TAXA": "Porphyromonadaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.24
+    },
+    {
+        "TAXA": "Corynebacteriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 4.21
+    },
+    {
+        "TAXA": "Fusobacteriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0
+    },
+    {
+        "TAXA": "Ruminococcaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 10.18
+    },
+    {
+        "TAXA": "Lachnospiraceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.57
+    },
+    {
+        "TAXA": "Flavobacteriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.38
+    },
+    {
+        "TAXA": "Actinomycetaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 3.83
+    },
+    {
+        "TAXA": "Pasteurellaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.38
+    },
+    {
+        "TAXA": "Micrococcaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 1.89
+    },
+    {
+        "TAXA": "Veillonellaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.62
+    },
+    {
+        "TAXA": "Streptococcaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 10.98
+    },
+    {
+        "TAXA": "Carnobacteriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.14
+    },
+    {
+        "TAXA": "Propionibacteriaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 42.59
+    },
+    {
+        "TAXA": "Moraxellaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 4.92
+    },
+    {
+        "TAXA": "Prevotellaceae",
+        "PROJECT": "SRR353621",
+        "ABUNDANCE": 0.24
+    }
+]
+

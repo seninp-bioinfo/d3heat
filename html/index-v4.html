@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>D3 Demo: SVG with data</title>
+    <script src="d3/d3.js"></script>
+
+    <style type="text/css">
+        rect.bordered {
+            stroke: #E6E6E6;
+            stroke-width:2px;   
+        }
+        text.mono {
+            font-size: 9pt;
+            font-family: Consolas, courier;
+            fill: #aaa;
+        }
+    </style>
+    
+</head>
+
+<body>
+    
+    <h2>The mock heatmap test</h2>
+    <div id="chart"></div>
+    
+    <script type="text/javascript">
+    
+    // a mock dataset
+    var data = [
+        {score: 0.1, row: 0, col: 0},
+        {score: 0.2, row: 0, col: 1},
+        {score: 0.6, row: 0, col: 2},
+        {score: 0.4, row: 1, col: 0},
+        {score: 0.3, row: 1, col: 1},
+        {score: 0.2, row: 1, col: 2},
+        {score: 0.9, row: 2, col: 0},
+        {score: 11, row: 2, col: 1},
+        {score: 55, row: 2, col: 2}
+    ];
+
+    // the "Jet" color sclae
+    var colorScale =d3.scaleLog()
+                .domain([0.01, 0.5, 1, 50, 100])
+                .range(['rgb(0,0,131)',
+                        'rgb(10,136,186)',
+                        'rgb(242,211,56)',
+                        'rgb(242,143,56)',
+                        'rgb(217,30,30)']);
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 20, right: 20, bottom: 70, left: 50},
+        width = 600 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
+
+    // h - height of each row in the heatmap
+    // w - width of each column in the heatmap
+    var gridSize = 150,
+        h = gridSize,
+        w = gridSize;
+
+    var svg = d3.select("#chart").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var tiles = svg.selectAll("rect")
+        .data(data, function(d) {return d.col + ':' + d.row;});
+
+    tiles.enter().append("rect")
+        .attr("x", function(d) {return d.row * w;})
+        .attr("y", function(d) {return d.col * h;})
+        .attr("rx", 4)
+        .attr("ry", 4)
+        .attr("class", "hour bordered")
+        .attr("width", w)
+        .attr("height", h)
+        .style("fill", colorScale(0.0));
+    tiles.exit();
+
+    svg.selectAll("rect")
+        .style("fill", function(d) { return colorScale(d.score); })
+        .append("title").text(function(d) {return d.score;});
+
+    //tiles = update.merge(tiles);
+
+
+    tiles.exit().remove();
+
+    var legendElementWidth = 50;
+    var legendElementHeight = 20;
+    var ticks = [0.1, 1, 10, 100]
+
+    var legend = svg.selectAll(".legend")
+        .data(ticks, function(d) { return d; });
+
+    legend.enter().append("g")
+        .attr("class", "legend")
+        .append("rect")
+        .attr("x", function(d, i) { return legendElementWidth * i; })
+        .attr("y", height)
+        .attr("width", legendElementWidth)
+        .attr("height", legendElementHeight)
+        .style("fill", function(d, i) { return colorScale(d); });
+    
+    legend.exit().remove();
+
+    var legend2 = svg.selectAll(".legendticks")
+        .data(ticks, function(d) { return d; });
+
+    legend2.enter().append("text")
+        .attr("class", "mono")
+        .text(function(d) { return "≥ " + Math.round(d); })
+        .attr("x", function(d, i) { return legendElementWidth * i; })
+        .attr("y", height);
+    legend2.exit().remove();
+
+
+    </script>
+</body>
+
+</html>
