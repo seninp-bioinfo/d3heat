@@ -9,6 +9,24 @@
     <meta name="author" content="seninp">
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+
+        .axis text {
+            font: 10px sans-serif;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .x.axis path {
+            display: none;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -25,10 +43,10 @@
     
             <p class="lead">Pin a fixed-height and width heatmap onto EDGE display.</p>
             
+            <div class="heatmap" id="heatmap"></div>
     
         </div>
-        <div id="push"></div>
-    
+        
     </div>
     
     
@@ -38,6 +56,135 @@
     <script src="http://d3js.org/d3.v4.min.js"></script>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        // try to get the data first
+        d3.tsv("https://raw.githubusercontent.com/seninp-bioinfo/d3heat/master/data/merged.tsv",
+            function(error, data) {
+            if (error) throw error;
+
+            console.log(data[0].TAXA);
+
+
+            d3.select("#heatmap").append("p").text("... read " + data.length + " records from merged.tsv ...");
+
+            // compute axes -- the TAXA and the PROJECTS
+            var taxas = d3.map(), // taxa - row
+                taxas_axis = [], 
+                taxas_sums = d3.map(),
+                projects = d3.map(), // project - column
+                projects_axis = [],
+                taxas_ctr = 0,
+                projects_ctr = 0;
+
+            data.forEach(function(d, i) {
+                if(!taxas.has(d.TAXA)){
+                    taxas.set(d.TAXA, taxas_ctr);
+                    taxas_axis.push(d.TAXA);
+                    taxas_sums.set(d.TAXA, d.ABUNDANCE);
+                    taxas_ctr = taxas_ctr+1;
+                } else {
+                    sum = taxas_sums.get(d.TAXA);
+                    taxas_sums.set(d.TAXA, d.ABUNDANCE + sum)                    
+                }
+                if(!projects.has(d.PROJECT)){
+                    projects.set(d.PROJECT, projects_ctr);
+                    projects_axis.push(d.PROJECT);
+                    projects_ctr = projects_ctr+1;
+                }
+            });
+            d3.select("#heatmap").append("p").text("... there are " + taxas.size() + 
+                " unique taxas in " + projects.size() + " projects ...");
+
+            // set the dimensions and margins of the graph
+            var margin = {top: 110, right: 20, bottom: 70, left: 200},
+            width = 600 - margin.left - margin.right,
+            height = 900 - margin.top - margin.bottom;
+
+            // append the svg obgect to the body of the page
+            // appends a 'group' element to 'svg'
+            // moves the 'group' element to the top left margin
+            var svg = d3.select("body").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            // define the X-scale and axis
+            var xScale = d3.scaleBand()
+                .domain(projects_axis)
+                .range([0,width]);
+
+            svg.append("g")
+            .attr("class", "axis")
+            //.attr("transform", "translate(0," + height + ")")
+            .call(d3.axisTop(xScale))
+            .selectAll("text")  
+            .style("text-anchor", "start")
+            .attr("dx", "0.5em")
+            .attr("dy", ".15em")
+            .attr("transform", "rotate(-65)");
+
+             var yScale = d3.scaleBand()
+                .domain(taxas_axis)
+                .range([0,height]);
+
+            svg.append("g")
+            .attr("class", "axis")
+            //.attr("transform", "translate(0," + height + ")")
+            .call(d3.axisLeft(yScale))
+            .selectAll("text")  
+            .style("text-anchor", "end")
+            .attr("dx", "-0.5em")
+            .attr("dy", ".15em");
+            //.attr("transform", "rotate(-65)");
+
+            // 
+            //
+            //
+            var _tiles = [];
+
+            data.forEach(function(d, i) {
+                var _col = taxas.get(d.TAXA);
+                var _row = projects.get(d.PROJECT);
+                var _score = d.ABUNDANCE;
+                _tiles.push({score: _score, row: _row, col: _col});
+                console.log(_tiles[i].row + ":" + _tiles[i].col + ":" + _tiles[i].score);
+            });
+
+            var w = 77;
+            var h = 12;
+
+            // the "Jet" color sclae
+            var colorScale =d3.scaleLog()
+                .domain([0.01, 0.5, 1, 50, 100])
+                .range(['rgb(0,0,131)',
+                        'rgb(10,136,186)',
+                        'rgb(242,211,56)',
+                        'rgb(242,143,56)',
+                        'rgb(217,30,30)']);
+
+            var tiles = svg.selectAll("rect")
+        .data(_tiles, function(d) {return d.col + ':' + d.row;});
+
+    tiles.enter().append("rect")
+        .attr("x", function(d) {return d.row * w;})
+        .attr("y", function(d) {return d.col * h;})
+        //.attr("rx", 1)
+        //.attr("ry", 1)
+        //.attr("class", "hour bordered")
+        .attr("width", w)
+        .attr("height", h)
+        .style("fill", colorScale(0.0));
+    tiles.exit();
+
+    svg.selectAll("rect")
+        .style("fill", function(d) { return colorScale(d.score); })
+        .append("title").text(function(d) {return d.score;});
+
+
+        });
+    </script>
 
 </body>
 
