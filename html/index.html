@@ -2,31 +2,31 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
     <title>D3 Heatmap demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="D3 Heatmap demo">
     <meta name="author" content="seninp">
-    <!-- CSS -->
+
+    <!-- CSS 
+    ================================================== -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
-
         .axis text {
             font: 10px sans-serif;
         }
-
         .axis path,
         .axis line {
             fill: none;
-            stroke: #000;
+            stroke: "black";
             shape-rendering: crispEdges;
         }
-
         .x.axis path {
             display: none;
         }
-
     </style>
+
 </head>
 
 <body>
@@ -43,6 +43,16 @@
     
             <p class="lead">Pin a fixed-height and width heatmap onto EDGE display.</p>
             
+            <div class="info" id="info"></div>
+
+            <p>Order taxa by: <select id="order">
+                <option value="name">by Name</option>
+                <option value="abundance">by Abundance</option>
+                <option value="random">Random</option>
+            </select>
+
+            <div class="selected_order" id="selected_order"></div>
+
             <div class="heatmap" id="heatmap"></div>
     
         </div>
@@ -58,48 +68,99 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
+
+        //
+        // the d3.comparator code, see the license in the /docs (BSD) 
+        // https://github.com/interactivethings/d3-comparator
+        (function() {
+            d3.comparator = function() {
+                var cmps = [], accessors = [];
+                var comparator = function(a, b) {
+                var i = -1, n = cmps.length, result;
+                while (++i < n) {
+                    result = cmps[i](accessors[i](a), accessors[i](b));
+                    if (result !== 0) return result;
+                }
+                return 0;
+            }
+            comparator.order = function(cmp, accessor) {
+                cmps.push(cmp);
+                accessors.push(accessor || identity);
+                return comparator;
+            }
+            return comparator;
+        }
+            function identity(d) { return d; }
+        })();
+
+        //
+        // http://stackoverflow.com/questions/118241/calculate-text-width-with-javascript
+        function getTextWidth(text, font) {
+            // re-use canvas object for better performance
+            var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+            var context = canvas.getContext("2d");
+            context.font = font;
+            var metrics = context.measureText(text);
+            return metrics.width;
+        }
+
         // try to get the data first
         d3.tsv("https://raw.githubusercontent.com/seninp-bioinfo/d3heat/master/data/merged.tsv",
             function(error, data) {
+            
             if (error) throw error;
 
-            console.log(data[0].TAXA);
-
-
-            d3.select("#heatmap").append("p").text("... read " + data.length + " records from merged.tsv ...");
+            // debug ...
+            d3.select("#info").append("p")
+            .append("mark").text("... read " + data.length + " records from merged.tsv ...");
 
             // compute axes -- the TAXA and the PROJECTS
             var taxas = d3.map(), // taxa - row
-                taxas_axis = [], 
-                taxas_sums = d3.map(),
                 projects = d3.map(), // project - column
-                projects_axis = [],
-                taxas_ctr = 0,
-                projects_ctr = 0;
+                taxas_sums = d3.map(), // taxas sums, will be used for sorting
+                projects = d3.map(), // project - column
+                projects_axis = [], // the projects 
+                taxas_ctr = 0, // counts how many taxas are here
+                projects_ctr = 0, // counts how many projects are here
+                max_prj_label_width = 0, // maximal width of the project label text
+                max_taxa_label_width = 0; // maximal width of the taxa label text
 
             data.forEach(function(d, i) {
                 if(!taxas.has(d.TAXA)){
                     taxas.set(d.TAXA, taxas_ctr);
-                    taxas_axis.push(d.TAXA);
-                    taxas_sums.set(d.TAXA, d.ABUNDANCE);
-                    taxas_ctr = taxas_ctr+1;
-                } else {
-                    sum = taxas_sums.get(d.TAXA);
-                    taxas_sums.set(d.TAXA, d.ABUNDANCE + sum)                    
+                    taxas_ctr++;
+                    var w = getTextWidth(d.TAXA, "10pt sans-serif");
+                    if(w>max_taxa_label_width){
+                        max_taxa_label_width = w;
+                    }
+                }
+                if(!taxas_sums.has(d.TAXA)){
+                    taxas_sums.set(d.TAXA, Number(d.ABUNDANCE));
+                } else {    
+                    taxas_sums.set(d.TAXA, Number(taxas_sums.get(d.TAXA)) + 
+                        Number(d.ABUNDANCE));                    
                 }
                 if(!projects.has(d.PROJECT)){
                     projects.set(d.PROJECT, projects_ctr);
                     projects_axis.push(d.PROJECT);
-                    projects_ctr = projects_ctr+1;
+                    projects_ctr++;
+                    var w = getTextWidth(d.PROJECT, "10pt sans-serif");
+                    if(w>max_prj_label_width){
+                        max_prj_label_width = w;
+                    }
                 }
             });
-            d3.select("#heatmap").append("p").text("... there are " + taxas.size() + 
+            // debug
+            d3.select("#info").append("p").append("mark").text("... there are " + taxas.size() + 
                 " unique taxas in " + projects.size() + " projects ...");
+            d3.select("#info").append("p")
+            .append("mark").text("... max taxa label width: " + max_taxa_label_width + ", project: " + max_prj_label_width + "...");
 
             // set the dimensions and margins of the graph
-            var margin = {top: 110, right: 20, bottom: 70, left: 200},
-            width = 600 - margin.left - margin.right,
-            height = 900 - margin.top - margin.bottom;
+            var canvas = {width: 400, height: 900},
+                margin = {top: max_prj_label_width, right: 20, bottom: 70, left: max_taxa_label_width},
+                width = canvas.width - margin.left - margin.right,
+                height = canvas.height - margin.top - margin.bottom;
 
             // append the svg obgect to the body of the page
             // appends a 'group' element to 'svg'
@@ -110,6 +171,7 @@
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+            // 
             // define the X-scale and axis
             var xScale = d3.scaleBand()
                 .domain(projects_axis)
@@ -118,42 +180,53 @@
             svg.append("g")
             .attr("class", "axis")
             //.attr("transform", "translate(0," + height + ")")
-            .call(d3.axisTop(xScale))
+            .call(d3.axisTop(xScale).tickSizeOuter([0]))
             .selectAll("text")  
             .style("text-anchor", "start")
-            .attr("dx", "0.5em")
-            .attr("dy", ".15em")
+            .attr("dx", ".75em")
+            .attr("dy", ".95em")
             .attr("transform", "rotate(-65)");
 
-             var yScale = d3.scaleBand()
+            //
+            //
+            var taxas_axis = [];
+            var _taxas_order = taxas_sums.entries();
+            var cmp = d3.comparator().order(d3.descending, function(d) { return d.value; });
+            _taxas_order.sort(cmp);
+            taxas_order = d3.map();
+            for (i = 0; i < _taxas_order.length; i++) { 
+                taxas_order.set(_taxas_order[i].key, i);
+                taxas_axis.push(_taxas_order[i].key);
+                // console.log(_taxas_order[i].key + " : " + _taxas_order[i].value);
+            }
+
+            var yScale = d3.scaleBand()
                 .domain(taxas_axis)
                 .range([0,height]);
 
             svg.append("g")
-            .attr("class", "axis")
+            .attr("class", "yaxis")
             //.attr("transform", "translate(0," + height + ")")
-            .call(d3.axisLeft(yScale))
+            .call(d3.axisLeft(yScale).tickSizeOuter([0]))
             .selectAll("text")  
             .style("text-anchor", "end")
-            .attr("dx", "-0.5em")
-            .attr("dy", ".15em");
+            .attr("dx", "-0.15em")
+            .attr("dy", ".25em");
             //.attr("transform", "rotate(-65)");
 
-            // 
-            //
-            //
+
             var _tiles = [];
 
             data.forEach(function(d, i) {
-                var _col = taxas.get(d.TAXA);
+                var _col = taxas_order.get(d.TAXA);
                 var _row = projects.get(d.PROJECT);
                 var _score = d.ABUNDANCE;
                 _tiles.push({score: _score, row: _row, col: _col});
-                console.log(_tiles[i].row + ":" + _tiles[i].col + ":" + _tiles[i].score);
+                //console.log(_tiles[i].row + ":" + _tiles[i].col + ":" + _tiles[i].score);
             });
 
-            var w = 77;
-            var h = 12;
+            var w = width / projects_ctr;
+            var h = height / taxas_ctr;
 
             // the "Jet" color sclae
             var colorScale =d3.scaleLog()
@@ -165,23 +238,100 @@
                         'rgb(217,30,30)']);
 
             var tiles = svg.selectAll("rect")
-        .data(_tiles, function(d) {return d.col + ':' + d.row;});
+                .data(_tiles, function(d) {return d.col + ':' + d.row;});
 
-    tiles.enter().append("rect")
-        .attr("x", function(d) {return d.row * w;})
-        .attr("y", function(d) {return d.col * h;})
-        //.attr("rx", 1)
-        //.attr("ry", 1)
-        //.attr("class", "hour bordered")
-        .attr("width", w)
-        .attr("height", h)
-        .style("fill", colorScale(0.0));
-    tiles.exit();
+            tiles.enter().append("rect")
+                .attr("x", function(d) {return d.row * w;})
+                .attr("y", function(d) {return d.col * h;})
+                //.attr("rx", 1)
+                //.attr("ry", 1)
+                //.attr("class", "hour bordered")
+                .attr("width", w)
+                .attr("height", h)
+                .style("fill", colorScale(0.0));
+            tiles.exit();
 
-    svg.selectAll("rect")
-        .style("fill", function(d) { return colorScale(d.score); })
-        .append("title").text(function(d) {return d.score;});
+            svg.selectAll("rect")
+                .style("fill", function(d) { return colorScale(d.score); })
+                .append("title").text(function(d) {return projects_axis[d.row] + " : " + 
+                    taxas_axis[d.col] + "\n" + d.score;});
 
+            
+            d3.select("#order").on("change", function() {
+                // clearTimeout(timeout);
+                order(this.value);
+            });
+
+            function order(value) {
+
+                var enter = d3.select("#selected_order").selectAll("mark").data([value]);
+
+                enter.enter().append("mark")
+                            .merge(enter)
+                            .text(function(d){return "... selected order: " + d + " ...";});
+
+                enter.exit().remove();
+
+                //
+                //
+                var taxas_axis = [];
+                var _taxas_order = taxas_sums.entries();
+
+                console.log(value);
+                if("abundance".localeCompare(value) == 0) {
+                    console.log("abundance sort");
+                    var cmp = d3.comparator().order(d3.descending, function(d) { return d.value; });
+                    _taxas_order.sort(cmp);
+                } else if ("random".localeCompare(value) == 0) {
+                    console.log("shuffle");
+                    d3.shuffle(_taxas_order);
+                } else {
+                    console.log("alphabet sort");
+                    var cmp = d3.comparator().order(d3.descending, function(d) { return d.key; });
+                    _taxas_order.sort(cmp);
+                }  
+
+                taxas_order = d3.map();
+                for (i = 0; i < _taxas_order.length; i++) { 
+                    taxas_order.set(_taxas_order[i].key, i);
+                    taxas_axis.push(_taxas_order[i].key);
+                // console.log(_taxas_order[i].key + " : " + _taxas_order[i].value);
+                }
+
+                var yyScale = d3.scaleBand()
+                    .domain(taxas_axis)
+                    .range([0,height]);
+
+                svg.select(".yaxis")
+                    //.transition().easeSinInOut(1500)  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
+                    .call(d3.axisLeft(yyScale).tickSizeOuter([0])); 
+
+                var _tiles = [];
+
+                data.forEach(function(d, i) {
+                    var _col = taxas_order.get(d.TAXA);
+                    var _row = projects.get(d.PROJECT);
+                    var _score = d.ABUNDANCE;
+                    _tiles.push({score: _score, row: _row, col: _col});
+                    //console.log(_tiles[i].row + ":" + _tiles[i].col + ":" + _tiles[i].score);
+                });
+
+                var tiles = svg.selectAll("rect")
+                    .data(_tiles, function(d) {return d.col + ':' + d.row;});
+
+                tiles.enter().append("rect")
+                    .merge(tiles)
+                    .attr("x", function(d) {return d.row * w;})
+                    .attr("y", function(d) {return d.col * h;})
+                    .attr("width", w)
+                    .attr("height", h)
+                    .style("fill", function(d) { return colorScale(d.score); })
+                    .append("title").text(function(d) {return projects_axis[d.row] + " : " + 
+                    taxas_axis[d.col] + "\n" + d.score;});
+                    
+                tiles.exit().remove();
+                
+            };
 
         });
     </script>
