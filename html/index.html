@@ -313,20 +313,24 @@
                     var _row = projects.get(d.PROJECT);
                     var _score = d.ABUNDANCE;
                     _tiles.push({score: _score, row: _row, col: _col});
-                    //console.log(_tiles[i].row + ":" + _tiles[i].col + ":" + _tiles[i].score);
                 });
 
                 var tiles = svg.selectAll("rect")
                     .data(_tiles, function(d) {return d.col + ':' + d.row;});
 
+                tiles.append("title");
+
                 tiles.enter().append("rect")
-                    .merge(tiles)
                     .attr("x", function(d) {return d.row * w;})
                     .attr("y", function(d) {return d.col * h;})
                     .attr("width", w)
                     .attr("height", h)
+                    .style("fill", function(d) { return colorScale(0); });
+
+                tiles.transition().duration(600).ease(d3.easeSinIn)
                     .style("fill", function(d) { return colorScale(d.score); })
-                    .append("title").text(function(d) {return projects_axis[d.row] + " : " + 
+
+                tiles.select("title").text(function(d) {return projects_axis[d.row] + " : " + 
                     taxas_axis[d.col] + "\n" + d.score;});
                     
                 tiles.exit().remove();
