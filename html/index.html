@@ -329,7 +329,7 @@
 
             var legendElementWidth = canvas.width / 10;
             var legendElementHeight = 15;
-            var lticks = [0.1, 0.5, 1, 10, 50, 100]
+            var lticks = [0.01, 0.5, 1, 10, 50, 100]
 
             var legend = svg.selectAll(".legend")
                 .data(lticks, function(d) { return d; });
@@ -349,7 +349,7 @@
 
             legendt.enter().append("text")
                 .attr("class", "mono")
-                .text(function(d, i) { if(i<lticks.length-1){return "≥"+Math.round(d);}else{return "≤"+Math.round(d);} })
+                .text(function(d, i) { if(i<lticks.length-1){return "≥"+d;}else{return "≤"+d;} })
                 .attr("x", function(d, i) { return width - legendElementWidth * (lticks.length - i); })
                 .attr("y", canvas.height - margin.bottom - legendElementHeight - 12);
             legendt.exit().remove();
