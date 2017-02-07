@@ -49,7 +49,7 @@
             <div class="info" id="info"></div>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                 Order TAXA by: 
                 <select id="order_taxa" class="js-example-basic-hide-search">
                     <option value="name">by Name</option>
@@ -74,8 +74,9 @@
                     <div id="selected_project_order"></div>
                 </div>   
             </div>
-                
-            <div class="heatmap" id="heatmap"></div>
+            
+            <div class="row top-buffer" id="heatmap">    
+            </div>
     
         </div>
         
@@ -217,7 +218,7 @@
 
             //
             // set the dimensions and margins of the graph
-            var margin = {top: max_prj_label_width, right: 10, bottom: 10, left: max_taxa_label_width},
+            var margin = {top: max_prj_label_width, right: max_prj_label_width*0.91, bottom: 10, left: max_taxa_label_width},
                 width = canvas.width - margin.left - margin.right,
                 height = canvas.height - margin.top - margin.bottom;
 
@@ -225,7 +226,7 @@
             // append the svg obgect to the body of the page
             // appends a 'group' element to 'svg'
             // moves the 'group' element to the top left margin
-            var svg = d3.select("body").append("svg")
+            var svg = d3.select("#heatmap").append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
