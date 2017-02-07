@@ -326,11 +326,14 @@
             tiles.exit().remove();
             _tiles.length = 0;
 
-
+            //
+            // place the legend under the plot
             var legendElementWidth = canvas.width / 10;
             var legendElementHeight = 15;
             var lticks = [0.01, 0.5, 1, 10, 50, 100]
 
+            //
+            // legend color tiles
             var legend = svg.selectAll(".legend")
                 .data(lticks, function(d) { return d; });
 
@@ -344,6 +347,8 @@
                 .style("fill", function(d, i) { return colorScale(d); });
             legend.exit().remove();
 
+            //
+            // legend text ticks
             var legendt = svg.selectAll(".legendticks")
                 .data(lticks, function(d) { return d; });
 
