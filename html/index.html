@@ -28,6 +28,11 @@
             display: none;
         }
         .top-buffer { margin-top:20px; }
+        text.mono {
+            font-size: 9pt;
+            font-family: Consolas, courier;
+            fill: #aaa;
+        }
     </style>
 
 </head>
@@ -218,7 +223,7 @@
 
             //
             // set the dimensions and margins of the graph
-            var margin = {top: max_prj_label_width, right: max_prj_label_width*0.91, bottom: 10, left: max_taxa_label_width},
+            var margin = {top: max_prj_label_width*0.82, right: max_prj_label_width*0.91, bottom: 50, left: max_taxa_label_width},
                 width = canvas.width - margin.left - margin.right,
                 height = canvas.height - margin.top - margin.bottom;
 
@@ -241,13 +246,13 @@
             //
             // append the scale to the plot
             svg.append("g")
-            .attr("class", "xaxis")
-            .call(d3.axisTop(xScale).tickSizeOuter([0]))
-            .selectAll("text")  // rotate the text on labels
-            .style("text-anchor", "start")
-            .attr("dx", ".75em")
-            .attr("dy", ".95em")
-            .attr("transform", "rotate(-65)");
+                .attr("class", "xaxis")
+                .call(d3.axisTop(xScale).tickSizeOuter([0]))
+                .selectAll("text")  // rotate the text on labels
+                .style("text-anchor", "start")
+                .attr("dx", ".75em")
+                .attr("dy", ".95em")
+                .attr("transform", "rotate(-65)");
 
             //
             // sort the taxas order using their row sums
@@ -270,12 +275,12 @@
             //
             // add the TAXAS scale to the canvas
             svg.append("g")
-            .attr("class", "yaxis")
-            .call(d3.axisLeft(yScale).tickSizeOuter([0]))
-            .selectAll("text")  
-            .style("text-anchor", "end")
-            .attr("dx", "-0.15em")
-            .attr("dy", ".25em");
+                .attr("class", "yaxis")
+                .call(d3.axisLeft(yScale).tickSizeOuter([0]))
+                .selectAll("text")  
+                .style("text-anchor", "end")
+                .attr("dx", "-0.15em")
+                .attr("dy", ".25em");
 
 
             //
@@ -320,6 +325,34 @@
 
             tiles.exit().remove();
             _tiles.length = 0;
+
+
+            var legendElementWidth = canvas.width / 10;
+            var legendElementHeight = 20;
+            var lticks = [0.1, 0.5, 1, 10, 50, 100]
+
+            var legend = svg.selectAll(".legend")
+                .data(lticks, function(d) { return d; });
+
+            legend.enter().append("g")
+                .attr("class", "legend")
+                .append("rect")
+                .attr("x", function(d, i) { return width - legendElementWidth * (lticks.length - i); })
+                .attr("y", canvas.height - margin.bottom - legendElementHeight - 10)
+                .attr("width", legendElementWidth)
+                .attr("height", legendElementHeight)
+                .style("fill", function(d, i) { return colorScale(d); });
+            legend.exit().remove();
+
+            var legendt = svg.selectAll(".legendticks")
+                .data(lticks, function(d) { return d; });
+
+            legendt.enter().append("text")
+                .attr("class", "mono")
+                .text(function(d, i) { if(i<lticks.length-1){return "≥"+Math.round(d);}else{return "≤"+Math.round(d);} })
+                .attr("x", function(d, i) { return width - legendElementWidth * (lticks.length - i); })
+                .attr("y", canvas.height - margin.bottom - legendElementHeight - 12);
+            legendt.exit().remove();
             
             //
             // attach the TAXA and PROJECT ordering to the function
@@ -379,7 +412,7 @@
                 //
                 // and place it on the screen
                 svg.select(".xaxis")
-                    .transition().duration(300).ease(d3.easeSinIn)
+                    .transition().duration(600).ease(d3.easeSinIn)
                     .call(d3.axisTop(xScale).tickSizeOuter([0])); 
 
                 //
@@ -399,14 +432,15 @@
 
                 tiles.append("title");
 
-                tiles.enter().append("rect")
+                tiles = tiles.enter().append("rect")
+                    .merge(tiles)
                     .attr("x", function(d) {return d.row * w;})
                     .attr("y", function(d) {return d.col * h;})
                     .attr("width", w)
                     .attr("height", h)
                     .style("fill", function(d) { return colorScale(0); });
 
-                tiles.transition().duration(400).ease(d3.easeSinIn)
+                tiles.transition().duration(800).ease(d3.easeSinIn)
                     .style("fill", function(d) { return colorScale(d.score); })
 
                 tiles.select("title").text(function(d) {return projects_axis[d.row] + " : " + 
@@ -462,7 +496,7 @@
                 //
                 // and place it on the screen
                 svg.select(".yaxis")
-                    .transition().duration(300).ease(d3.easeSinIn)
+                    .transition().duration(600).ease(d3.easeSinIn)
                     .call(d3.axisLeft(yScale).tickSizeOuter([0])); 
 
                 //
@@ -482,14 +516,15 @@
 
                 tiles.append("title");
 
-                tiles.enter().append("rect")
+                tiles = tiles.enter().append("rect")
+                    .merge(tiles)
                     .attr("x", function(d) {return d.row * w;})
                     .attr("y", function(d) {return d.col * h;})
                     .attr("width", w)
                     .attr("height", h)
                     .style("fill", function(d) { return colorScale(0); });
 
-                tiles.transition().duration(400).ease(d3.easeSinIn)
+                tiles.transition().duration(800).ease(d3.easeSinIn)
                     .style("fill", function(d) { return colorScale(d.score); })
 
                 tiles.select("title").text(function(d) {return projects_axis[d.row] + " : " + 
