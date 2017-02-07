@@ -12,6 +12,8 @@
     <!-- CSS 
     ================================================== -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+
     <style>
         .axis text {
             font: 10px sans-serif;
@@ -25,6 +27,7 @@
         .x.axis path {
             display: none;
         }
+        .top-buffer { margin-top:20px; }
     </style>
 
 </head>
@@ -45,14 +48,33 @@
             
             <div class="info" id="info"></div>
 
-            <p>Order taxa by: <select id="order">
-                <option value="name">by Name</option>
-                <option value="abundance">by Abundance</option>
-                <option value="random">Random</option>
-            </select>
+            <div class="row">
+                <div class="col-md-4">
+                Order TAXA by: 
+                <select id="order_taxa" class="js-example-basic-hide-search">
+                    <option value="name">by Name</option>
+                    <option value="abundance">by Abundance</option>
+                    <option value="random">Random</option>
+                </select>
+                </div>
+                <div class="col-md-3 offset1">    
+                Order projects by: 
+                <select id="order_projects" class="js-example-basic-hide-search">
+                    <option value="name">by Name</option>
+                    <option value="random">Random</option>
+                </select>
+                </div>    
+            </div>
 
-            <div class="selected_order" id="selected_order"></div>
-
+            <div class="row top-buffer">
+                <div class="col-md-4">
+                    <div id="selected_taxa_order"></div>
+                </div>   
+                <div class="col-md-4 offset1">
+                    <div id="selected_project_order"></div>
+                </div>   
+            </div>
+                
             <div class="heatmap" id="heatmap"></div>
     
         </div>
@@ -66,6 +88,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+        $(".js-example-basic-hide-search").select2({
+            minimumResultsForSearch: Infinity
+        });
+    </script>
 
     <script>
 
@@ -211,7 +240,7 @@
             //
             // append the scale to the plot
             svg.append("g")
-            .attr("class", "axis")
+            .attr("class", "xaxis")
             .call(d3.axisTop(xScale).tickSizeOuter([0]))
             .selectAll("text")  // rotate the text on labels
             .style("text-anchor", "start")
@@ -292,21 +321,109 @@
             _tiles.length = 0;
             
             //
-            // Define the function which re-arranges axis and tiles based on the user input
-            //
-            d3.select("#order").on("change", function() {
-                // clearTimeout(timeout);
-                order(this.value);
-            });
+            // attach the TAXA and PROJECT ordering to the function
+            $('select').on('change', function (evt) {
+                console.log(evt.currentTarget.id + " : " + evt.currentTarget.value);
+                if ("order_taxa".localeCompare(evt.currentTarget.id) == 0) {
+                    order_taxas(evt.currentTarget.value);
+                } else if ("order_projects".localeCompare(evt.currentTarget.id) == 0) {
+                    order_projects(evt.currentTarget.value);
+                } else {
+                    alert("Unknown selection!");
+                }
+            })
 
-            function order(value) {
+            function order_projects(value) {
 
                 //
                 // put a debug message on the screen
-                var enter = d3.select("#selected_order").selectAll("mark").data([value]);
+                var enter = d3.select("#selected_project_order").selectAll("mark").data([value]);
                 enter.enter().append("mark")
                             .merge(enter)
-                            .text(function(d){return "... selected order: " + d + " ...";});
+                            .text(function(d){return "... selected PROJECT order: " + d + " ...";});
+                enter.exit().remove();
+
+                //
+                // re-sort projects axis
+               var _projects_order = projects_order.entries();
+                if("name".localeCompare(value) == 0) {
+                    console.log("abundance sort");
+                    var cmp = d3.comparator().order(d3.descending, function(d) { return d.key; });
+                    _projects_order.sort(cmp);
+                } else if ("random".localeCompare(value) == 0) {
+                    console.log("shuffle");
+                    d3.shuffle(_projects_order);
+                } else {
+                    console.log("unknown sort for projects selected");
+                    alert("unknown sort for projects selected");                    
+                }  
+
+                //
+                // re-populate the projects map
+                projects_order.clear();
+                projects_axis.length = 0;
+                for (i = 0; i < _projects_order.length; i++) { 
+                    projects_order.set(_projects_order[i].key, i);
+                    projects_axis.push(_projects_order[i].key);
+                    console.log(_projects_order[i].key);
+                }
+                _projects_order.length = 0;
+
+                //
+                // re-define the Y (TAXA) 
+                xScale = d3.scaleBand()
+                    .domain(projects_axis)
+                    .range([0,width]);
+
+                //
+                // and place it on the screen
+                svg.select(".xaxis")
+                    .transition().duration(300).ease(d3.easeSinIn)
+                    .call(d3.axisTop(xScale).tickSizeOuter([0])); 
+
+                //
+                // re-populate the tiles
+                _tiles.length = 0;
+                data.forEach(function(d, i) {
+                    var _col = taxas_order.get(d.TAXA);
+                    var _row = projects_order.get(d.PROJECT);
+                    var _score = d.ABUNDANCE;
+                    _tiles.push({score: _score, row: _row, col: _col});
+                });
+
+                //
+                // replace the tiles on the screen
+                var tiles = svg.selectAll("rect")
+                    .data(_tiles, function(d) {return d.col + ':' + d.row;});
+
+                tiles.append("title");
+
+                tiles.enter().append("rect")
+                    .attr("x", function(d) {return d.row * w;})
+                    .attr("y", function(d) {return d.col * h;})
+                    .attr("width", w)
+                    .attr("height", h)
+                    .style("fill", function(d) { return colorScale(0); });
+
+                tiles.transition().duration(400).ease(d3.easeSinIn)
+                    .style("fill", function(d) { return colorScale(d.score); })
+
+                tiles.select("title").text(function(d) {return projects_axis[d.row] + " : " + 
+                    taxas_axis[d.col] + "\n" + d.score;});
+                    
+                tiles.exit().remove();
+                _tiles.length = 0;
+                
+            };
+
+            function order_taxas(value) {
+
+                //
+                // put a debug message on the screen
+                var enter = d3.select("#selected_taxa_order").selectAll("mark").data([value]);
+                enter.enter().append("mark")
+                            .merge(enter)
+                            .text(function(d){return "... selected TAXA order: " + d + " ...";});
                 enter.exit().remove();
 
                 //
