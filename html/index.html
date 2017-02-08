@@ -55,7 +55,7 @@
 
             <div class="row">
                 <div class="col-md-3">
-                Order TAXA by: 
+                Order Taxa by: 
                 <select id="order_taxa" class="js-example-basic-hide-search">
                     <option value="name_az">by Name (a-z)</option>
                     <option value="name_za">by Name (z-a)</option>
@@ -64,7 +64,7 @@
                 </select>
                 </div>
                 <div class="col-md-3 offset1">    
-                Order projects by: 
+                Order Projects by: 
                 <select id="order_projects" class="js-example-basic-hide-search">
                     <option value="name_az">by Name (a-z)</option>
                     <option value="name_za">by Name (z-a)</option>
@@ -386,7 +386,7 @@
                 var enter = d3.select("#selected_project_order").selectAll("mark").data([value]);
                 enter.enter().append("mark")
                             .merge(enter)
-                            .text(function(d){return "... selected PROJECT order: " + d + " ...";});
+                            .text(function(d){return "... selected Projects order: " + d + " ...";});
                 enter.exit().remove();
 
                 //
@@ -470,7 +470,7 @@
                 var enter = d3.select("#selected_taxa_order").selectAll("mark").data([value]);
                 enter.enter().append("mark")
                             .merge(enter)
-                            .text(function(d){return "... selected TAXA order: " + d + " ...";});
+                            .text(function(d){return "... selected Taxa order: " + d + " ...";});
                 enter.exit().remove();
 
                 //
