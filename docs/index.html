@@ -57,7 +57,8 @@
                 <div class="col-md-3">
                 Order TAXA by: 
                 <select id="order_taxa" class="js-example-basic-hide-search">
-                    <option value="name">by Name</option>
+                    <option value="name_az">by Name (a-z)</option>
+                    <option value="name_za">by Name (z-a)</option>
                     <option value="abundance">by Abundance</option>
                     <option value="random">Random</option>
                 </select>
@@ -65,17 +66,18 @@
                 <div class="col-md-3 offset1">    
                 Order projects by: 
                 <select id="order_projects" class="js-example-basic-hide-search">
-                    <option value="name">by Name</option>
+                    <option value="name_az">by Name (a-z)</option>
+                    <option value="name_za">by Name (z-a)</option>
                     <option value="random">Random</option>
                 </select>
                 </div>    
             </div>
 
             <div class="row top-buffer">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div id="selected_taxa_order"></div>
                 </div>   
-                <div class="col-md-4 offset1">
+                <div class="col-md-3 offset1">
                     <div id="selected_project_order"></div>
                 </div>   
             </div>
@@ -385,12 +387,13 @@
                 //
                 // re-sort projects axis
                var _projects_order = projects_order.entries();
-                if("name".localeCompare(value) == 0) {
-                    console.log("abundance sort");
+                if("name_az".localeCompare(value) == 0) {
+                    var cmp = d3.comparator().order(d3.ascending, function(d) { return d.key; });
+                    _projects_order.sort(cmp);
+                } else if("name_za".localeCompare(value) == 0) {
                     var cmp = d3.comparator().order(d3.descending, function(d) { return d.key; });
                     _projects_order.sort(cmp);
                 } else if ("random".localeCompare(value) == 0) {
-                    console.log("shuffle");
                     d3.shuffle(_projects_order);
                 } else {
                     console.log("unknown sort for projects selected");
@@ -470,16 +473,19 @@
                 // re-sort taxas axis
                 _taxas_order = taxas_sums.entries();
                 if("abundance".localeCompare(value) == 0) {
-                    console.log("abundance sort");
                     var cmp = d3.comparator().order(d3.descending, function(d) { return d.value; });
                     _taxas_order.sort(cmp);
-                } else if ("random".localeCompare(value) == 0) {
-                    console.log("shuffle");
-                    d3.shuffle(_taxas_order);
-                } else {
-                    console.log("alphabet sort");
+                } else if("name_az".localeCompare(value) == 0) {
+                    var cmp = d3.comparator().order(d3.ascending, function(d) { return d.key; });
+                    _taxas_order.sort(cmp);
+                } else if("name_za".localeCompare(value) == 0) {
                     var cmp = d3.comparator().order(d3.descending, function(d) { return d.key; });
                     _taxas_order.sort(cmp);
+                } else if ("random".localeCompare(value) == 0) {
+                    d3.shuffle(_taxas_order);
+                } else {
+                    console.log("unknown sort for TAXA selected");
+                    alert("unknown sort for TAXA selected");      
                 }  
 
                 //
