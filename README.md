@@ -15,4 +15,7 @@ Currently the javascript code fetches with d3's `d3.tsv` a three-column TSV file
     "Eubacteriaceae"	"SRR059928"	0
 
 ### 0.2. The implementation notes:
-The heatmap code is built upon [D3.js](https://d3js.org/), the demo webpage uses [Bootstrap](http://getbootstrap.com/) ([jQuery](http://jquery.com/)), and [Select2](https://select2.github.io/) plugin for a pretty formatting.
+The heatmap code is built upon [D3.js](https://d3js.org/), the demo webpage uses [Bootstrap](http://getbootstrap.com/), [jQuery](http://jquery.com/), and [Select2](https://select2.github.io/) plugin for a pretty formatting.
+
+## Made with Aloha!
+![Made with Aloha!](https://raw.githubusercontent.com/GrammarViz2/grammarviz2_src/master/src/resources/assets/aloha.jpg)
