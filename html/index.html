@@ -225,9 +225,14 @@
 
             //
             // set the dimensions and margins of the graph
-            var margin = {top: max_prj_label_width*0.82, right: max_prj_label_width*0.91, bottom: 50, left: max_taxa_label_width},
+            var margin = {top: max_prj_label_width*0.92, right: max_prj_label_width*0.42, bottom: 50, left: max_taxa_label_width},
                 width = canvas.width - margin.left - margin.right,
                 height = canvas.height - margin.top - margin.bottom;
+
+            //
+            // debug messages
+            d3.select("#info").append("p").append("mark").text("... margin top: " + Math.round(margin.top) + 
+                ", margin right: " + Math.round(margin.right));
 
             //
             // append the svg obgect to the body of the page
@@ -331,7 +336,7 @@
             //
             // place the legend under the plot
             var legendElementWidth = canvas.width / 10;
-            var legendElementHeight = 15;
+            var legendElementHeight = 20;
             var lticks = [0.01, 0.5, 1, 10, 50, 100]
 
             //
@@ -407,7 +412,6 @@
                 for (i = 0; i < _projects_order.length; i++) { 
                     projects_order.set(_projects_order[i].key, i);
                     projects_axis.push(_projects_order[i].key);
-                    console.log(_projects_order[i].key);
                 }
                 _projects_order.length = 0;
 
