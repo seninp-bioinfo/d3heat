@@ -220,8 +220,8 @@
             d3.select("#info").append("p").append("mark").text("... there are " + taxas.size() + 
                 " unique taxas in " + projects.size() + " projects ...");
             d3.select("#info").append("p")
-            .append("mark").text("... max taxa label width: " + max_taxa_label_width + 
-                ", project: " + max_prj_label_width + "...");
+            .append("mark").text("... max taxa label width: " + Math.round(max_taxa_label_width) + 
+                "px, project: " + Math.round(max_prj_label_width) + "px ...");
 
             //
             // set the dimensions and margins of the graph
@@ -232,7 +232,7 @@
             //
             // debug messages
             d3.select("#info").append("p").append("mark").text("... margin top: " + Math.round(margin.top) + 
-                ", margin right: " + Math.round(margin.right));
+                "px, margin right: " + Math.round(margin.right) + "px ...");
 
             //
             // append the svg obgect to the body of the page
