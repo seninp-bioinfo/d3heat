@@ -33,6 +33,39 @@
             font-family: Consolas, courier;
             fill: #aaa;
         }
+        #show-length {
+          <!-- position: absolute; -->
+          top: 10px;
+          left: 10px;
+        }
+
+        .links {
+          fill: none;
+          stroke: #000;
+        }
+
+        .link-extensions {
+          fill: none;
+          stroke: #000;
+          stroke-opacity: .25;
+        }
+
+        .labels {
+          font: 10px sans-serif;
+        }
+
+        .link--active {
+          stroke: #000 !important;
+          stroke-width: 1.5px;
+        }
+
+        .link-extension--active {
+          stroke-opacity: .6;
+        }
+
+        .label--active {
+          font-weight: bold;
+        }
     </style>
 
 </head>
@@ -51,6 +84,8 @@
     
             <p class="lead">Pin a fixed-height and width heatmap onto <a href="https://bioedge.lanl.gov/edge_ui/">EDGE</a> display.</p>
 
+            <p id="cluster_demo"></p>
+
             <blockquote class="blockquote">
                 <p class="mb-0"> <span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
                 Use mouse-over to see the tile info.</p>
@@ -60,21 +95,22 @@
 
             <div class="row">
                 <div class="col-md-3">
-                Order Taxa by: 
-                <select id="order_taxa" class="js-example-basic-hide-search">
-                    <option value="name_az">by Name (a-z)</option>
-                    <option value="name_za">by Name (z-a)</option>
-                    <option value="abundance">by Abundance</option>
-                    <option value="random">Random</option>
-                </select>
+                    Order Taxa by: 
+                    <select id="order_taxa" class="js-example-basic-hide-search">
+                        <option value="name_az">by Name (a-z)</option>
+                        <option value="name_za">by Name (z-a)</option>
+                        <option value="abundance">by Abundance</option>
+                        <option value="random">Random</option>
+                    </select>
                 </div>
                 <div class="col-md-3 offset1">    
-                Order Projects by: 
-                <select id="order_projects" class="js-example-basic-hide-search">
-                    <option value="name_az">by Name (a-z)</option>
-                    <option value="name_za">by Name (z-a)</option>
-                    <option value="random">Random</option>
-                </select>
+                    Order Projects by: 
+                    <select id="order_projects" class="js-example-basic-hide-search">
+                        <option value="cluster">by Name (z-a)</option>
+                        <option value="name_az">by Name (a-z)</option>
+                        <option value="name_za">by Name (z-a)</option>
+                        <option value="random">Random</option>
+                    </select>
                 </div>    
             </div>
 
@@ -87,7 +123,8 @@
                 </div>   
             </div>
             
-            <div class="row top-buffer" id="heatmap">    
+            <div class="row top-buffer" id="cluster"></div>
+            <div id="heatmap">    
             </div>
     
         </div>
@@ -102,6 +139,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+    <!-- Copyright 2011 Jason Davies https://github.com/jasondavies/newick.js -->
+    <script>function parseNewick(a){for(var e=[],r={},s=a.split(/\s*(;|\(|\)|,|:)\s*/),t=0;t<s.length;t++){var n=s[t];switch(n){case"(":var c={};r.branchset=[c],e.push(r),r=c;break;case",":var c={};e[e.length-1].branchset.push(c),r=c;break;case")":r=e.pop();break;case":":break;default:var h=s[t-1];")"==h||"("==h||","==h?r.name=n:":"==h&&(r.length=parseFloat(n))}}return r}
+    </script>
 
     <script type="text/javascript">
         $(".js-example-basic-hide-search").select2({
@@ -230,7 +271,7 @@
 
             //
             // set the dimensions and margins of the graph
-            var margin = {top: max_prj_label_width*0.92, right: max_prj_label_width*0.42, bottom: 50, left: max_taxa_label_width},
+            var margin = {top: max_prj_label_width*0.9, right: max_prj_label_width*0.42, bottom: 50, left: max_taxa_label_width},
                 width = canvas.width - margin.left - margin.right,
                 height = canvas.height - margin.top - margin.bottom;
 
@@ -263,8 +304,8 @@
                 .selectAll("text")  // rotate the text on labels
                 .style("text-anchor", "start")
                 .attr("dx", ".75em")
-                .attr("dy", ".95em")
-                .attr("transform", "rotate(-65)");
+                .attr("dy", "1.3em")
+                .attr("transform", "rotate(-90)");
 
             //
             // sort the taxas order using their row sums
@@ -544,6 +585,104 @@
                 _tiles.length = 0;
                 
             };
+
+        // tree
+        //
+        var treeHeight = 50, treeWidth = canvas.width - margin.left - w;
+
+        var treeCluster = d3.cluster()
+            .size([treeWidth, treeHeight])
+            .separation(function(a, b) { return 1; });
+
+        console.log(w);
+
+        var svgTree = d3.select("#cluster").append("svg")
+            .attr("width", margin.left + treeWidth)
+            .attr("height", treeHeight)
+            .append("g")
+            .attr("transform", "translate(" + (margin.left + w/2) + ")");
+
+
+        // chart
+        //
+        var chartTree = svgTree.append("g")
+            .attr("transform", "translate(" + 0 + "," + 0 + ")");
+
+        d3.text("test.txt", function(error, life) {
+            if (error) throw error;
+
+            tree = parseNewick(life);
+
+            var rootTree = d3.hierarchy(tree, function(d) { return d.branchset; })
+                .sum(function(d) { return d.branchset ? 0 : 1; })
+                .sort(function(a, b) { return (a.value - b.value) || d3.ascending(a.data.length, b.data.length); });
+
+            treeCluster(rootTree);
+
+            setColor(rootTree);
+
+            console.log(rootTree.leaves());
+
+            var linkExtensionTree = chartTree.append("g")
+                .attr("class", "link-extensions")
+                .selectAll("path")
+                .data(rootTree.links().filter(function(d) { return !d.target.children; }))
+                .enter().append("path")
+              .each(function(d) { d.target.linkExtensionNode = this; })
+                .attr("d", treeLinkExtensionConstant);
+
+            var linkTree = chartTree.append("g")
+                .attr("class", "links")
+                .selectAll("path")
+                .data(rootTree.links())
+                .enter().append("path")
+                    .each(function(d) { d.target.linkNode = this; })
+                    .attr("d", treeLinkConstant)
+                    .attr("stroke", function(d) { return d.target.color; });        
+
+        });
+
+        // Compute the maximum cumulative length of any node in the tree.
+        function maxLength(d) {
+          return d.data.length + (d.children ? d3.max(d.children, maxLength) : 0);
+        }
+
+        function setBranchLength(d, y0, k) {
+          d.y = (y0 += d.data.length) * k;
+          d.blen = d.y;
+          if (d.children) d.children.forEach(function(d) { setBranchLength(d, y0, k); });
+        }
+
+        // Set the color of each node by recursively inheriting.
+        function setColor(d) {
+          var name = d.data.name;
+          d.color = "black";
+          if (d.children) d.children.forEach(setColor);
+        }
+
+        function treeLinkVariable(d) {
+          return treeLinkStep(d.source.x, d.source.y, d.target.x, d.target.blen);
+        }
+
+        function treeLinkConstant(d) {
+          return treeLinkStep(d.source.x, d.source.y, d.target.x, d.target.y);
+        }
+
+        function treeLinkExtensionVariable(d) {
+          return treeLinkStep(d.target.x, d.target.y, d.target.x, d.target.y);
+        }
+
+        function treeLinkExtensionConstant(d) {
+          return treeLinkStep(d.target.x, d.target.y, d.target.x, d.target.y);
+        }
+
+        function treeLinkStep(startX, startY, endX, endY) {
+            str = "M" + startX + "," + startY
+                + "L" + endX + "," + startY
+                + "L" + endX + "," + endY;
+            //console.log(str);
+            return str;
+        }
 
         });
     </script>
