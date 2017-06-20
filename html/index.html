@@ -199,7 +199,8 @@
                         'rgb(217,30,30)']);
 
         // 
-        // the heatmap function to run on data
+        // the heatmap drawing function to run on data pulled from URI
+        //
         d3.tsv("https://raw.githubusercontent.com/seninp-bioinfo/d3heat/master/data/merged.tsv",
             function(error, data) {
             
@@ -210,19 +211,17 @@
             .append("mark").text("... read " + data.length + " records from merged.tsv ...");
 
             //
-            // define some global VARS
-            var canvas = {width: 400, height: 900},
-                taxas = d3.set(), // taxa - row
-                taxas_sums = d3.map(), // taxas sums, will be used for sorting
+            // define global VARS
+            var canvas = {width: 400, height: 900}, // the canvas size for the heatmap
+                taxas = d3.set(), // all taxas found in the file
+                taxas_sums = d3.map(), // taxas sums, will be used for sorting "by abundance"
                 taxas_order = d3.map(), // the order of TAXA on the screen <taxa, order>
                 taxas_axis = [], // the taxa axis
-                taxas_ctr = 0, // counts how many taxas are here  
                 //
                 projects = d3.set(), // project - column
                 projects_cluster_order = d3.map(), // project - column -- but in the clustering order
                 projects_order = d3.map(), // the order of PROJECTS on the screen <project, order>
                 projects_axis = [], // the projects axis
-                projects_ctr = 0, // counts how many projects are here
                 //
                 max_prj_label_width = 0, // maximal width of the project label text
                 max_taxa_label_width = 0; // maximal width of the taxa label text
@@ -235,7 +234,6 @@
                 // count taxas and update the max width of the TAXA label
                 if(!taxas.has(d.TAXA)){
                     taxas.add(d.TAXA);
-                    taxas_ctr++;
                     var w = getTextWidth(d.TAXA, "10pt sans-serif");
                     if(w>max_taxa_label_width){
                         max_taxa_label_width = w;
@@ -254,8 +252,7 @@
                 if(!projects.has(d.PROJECT)){
                     projects.add(d.PROJECT);
                     projects_axis.push(d.PROJECT);
-                    projects_order.set(d.PROJECT, projects_ctr);
-                    projects_ctr++;
+                    projects_order.set(d.PROJECT, projects.size() - 1);
                     var w = getTextWidth(d.PROJECT, "10pt sans-serif");
                     if(w>max_prj_label_width){
                         max_prj_label_width = w;
@@ -350,8 +347,8 @@
 
             //
             // define the tile's dimensions
-            var w = width / projects_ctr;
-            var h = height / taxas_ctr;
+            var w = width / projects.size();
+            var h = height / taxas.size();
 
             //
             // add the tiles to the plot
@@ -431,7 +428,6 @@
                 // re-sort projects axis
                var _projects_order = projects_order.entries();
                 if("cluster".localeCompare(value) == 0) {
-                    var cmp = d3.comparator().order(d3.ascending, function(d) { return d.key; });
                     _projects_order = projects_cluster_order.entries();
                     d3.select("#cluster svg")
                         .transition()
@@ -617,8 +613,6 @@
             .size([treeWidth, treeHeight])
             .separation(function(a, b) { return 1; });
 
-        console.log(w);
-
         var svgTree = d3.select("#cluster").append("svg")
             .attr("width", margin.left + treeWidth)
             .attr("height", treeHeight)
@@ -667,6 +661,10 @@
                     .attr("stroke", function(d) { return d.target.color; })
                     .attr("stroke-width", 2)
                     .attr("stroke-linecap", "round");        
+
+            //
+            // since the clustering is OK (we've got that far) -- reorder projects
+            order_projects("cluster");
 
         });
 
