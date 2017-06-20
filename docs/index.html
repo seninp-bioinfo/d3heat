@@ -97,9 +97,9 @@
                 <div class="col-md-3">
                     Order Taxa by: 
                     <select id="order_taxa" class="js-example-basic-hide-search">
+                        <option value="abundance">by Abundance</option>                    
                         <option value="name_az">by Name (a-z)</option>
                         <option value="name_za">by Name (z-a)</option>
-                        <option value="abundance">by Abundance</option>
                         <option value="random">Random</option>
                     </select>
                 </div>
@@ -318,6 +318,13 @@
                 taxas_axis.push(_taxas_order[i].key);
             }
             _taxas_order.length = 0; // free the memory
+
+            // make a note
+            var enter = d3.select("#selected_taxa_order").selectAll("mark").data(['abundance']);
+            enter.enter().append("mark").merge(enter)
+                            .text(function(d){return "... selected Taxa order: " + d + " ...";});
+            enter.exit().remove();
+
 
             //
             // define the TAXAS Y-scale
