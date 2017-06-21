@@ -1,0 +1,29 @@
+{
+  "name": "d3heat",
+  "version": "0.0.1",
+  "description": "JavaScript implementation of EDGE heatmap widget",
+  "license": "GPL-3.0",
+  "repository": "seninp-bioinfo/d3heat",
+  "bugs": { "url" : "http://github.com/seninp-bioinfo/d3heat/issues"
+  },
+  "author": {
+    "name": "Pavel Senin",
+    "email": "seninp@gmail.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "keywords": [
+    "heatmap",
+    "dendogram",
+    "bioinformatics"
+  ],
+  "devDependencies": {
+    "gulp-qunit": "~0.2.1",
+    "gulp-util": "~2.2.14",
+    "gulp": "~3.5.1"
+  }
+}
