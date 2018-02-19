@@ -1,4 +1,4 @@
-## d3heat - an interactive fixed-height and width heatmap with dendogram for [EDGE](https://bioedge.lanl.gov/edge_ui/) display.
+## d3heat - an interactive fixed-height and width heatmap with dendogram for [EDGE](https://github.com/LANL-Bioinformatics/EDGE) display.
 
 ### 0.0. A screenshot:
 ![A heatmap example](https://raw.githubusercontent.com/seninp-bioinfo/d3heat/master/site/screen01.png)
